@@ -9,6 +9,26 @@ import ReactPlayer from "react-player";
 // import ReactPlayer from "react-player";
 
 export default function VideoDetail() {
+  const handleShareClick = async () => {
+    try {
+      const shareLink = window.location.href;
+      if (navigator.share) {
+        await navigator.share({
+          title: "Share this app",
+          text: "Check out this notes app!",
+          url: shareLink,
+        });
+      } else {
+        // Fallback for browsers that don't support navigator.share
+        navigator.clipboard.writeText(shareLink);
+        // You can handle the fallback behavior here, if needed
+      }
+    } catch (error) {
+      // Handle any errors that may occur during sharing
+      console.error("Error sharing:", error);
+    }
+  };
+
   const [videoDetail, setVideoDetail] = useState(null);
   const [videos, setVideos] = useState([]);
   const { id } = useParams();
@@ -63,6 +83,7 @@ export default function VideoDetail() {
                   />
                 </Typography>
               </Link>
+              <button onClick={handleShareClick}>Share</button>
               <Stack direction="row" gap="20px" alignItems="center">
                 <Typography variant="body1" sx={{ opacity: 0.7 }}>
                   {parseInt(viewCount).toLocaleString()} views

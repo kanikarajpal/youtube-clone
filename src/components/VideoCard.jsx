@@ -8,7 +8,6 @@ import {
   demoVideoTitle,
   demoThumbnailUrl,
   demoChannelUrl,
-  demoProfilePicture,
 } from "../utils/constants";
 
 export default function VideoCard({
@@ -27,7 +26,7 @@ export default function VideoCard({
     >
       <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
         <CardMedia
-          image={snippet?.thumbnails?.high?.url || demoVideoUrl}
+          image={snippet?.thumbnails?.high?.url || demoThumbnailUrl}
           alt={snippet?.title}
           sx={{ width: { xs: "92vw", sm: "358px", md: "300px" }, height: 180 }}
         >
@@ -36,7 +35,7 @@ export default function VideoCard({
       </Link>
 
       <CardContent sx={{ background: "#1e1e1e", height: "106px" }}>
-        <Link to={videoId ? "/video/${videoId}" : demoVideoUrl}>
+        <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
           <Typography variant="subtitle1" fontWeight="bold" color="#fff">
             {snippet?.title.slice(0, 60) || demoVideoTitle.slice(0, 60)}
           </Typography>

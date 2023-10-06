@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { CheckCircle } from "@mui/icons-material";
 import { demoChannelTitle, demoProfilePicture } from "../utils/constants";
-import { Box, Typography, Card, CardContent, CardMedia } from "@mui/material";
+import { Box, Typography, CardContent, CardMedia } from "@mui/material";
 
 export default function ChannelCard({ channelDetail, marginTop }) {
   return (
